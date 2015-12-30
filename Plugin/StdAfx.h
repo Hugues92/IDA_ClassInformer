@@ -33,17 +33,18 @@
 // Qt libs
 #include <QtCore/QTextStream>
 #include <QtCore/QFile>
-#include <QtGui/QApplication>
-#include <QtGui/QProgressDialog>
-#include <QtGui/QLabel>
-#include <QtGui/QPushButton>
-#include <QtGui/QTableView>
-#include <QtGui/QHeaderView>
-#include <QtGui/QScrollBar>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QProgressDialog>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QTableView>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QScrollBar>
 // (IDA SDK)\lib\x86_win_qt
-#pragma comment(lib, "QtCore4.lib")
-#pragma comment(lib, "QtGui4.lib")
+#pragma comment(lib, "Qt5Core.lib")
+#pragma comment(lib, "Qt5Widgets.lib")
+#pragma comment(lib, "Qt5Gui.lib")
 
 #define STYLE_PATH ":/classinf/"
 
-#define MY_VERSION MAKEWORD(0, 2) // Low, high, convention: 0 to 99
+#define MY_VERSION MAKEWORD(1, 2) // Low, high, convention: 0 to 99

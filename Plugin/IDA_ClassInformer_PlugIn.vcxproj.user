@@ -3,25 +3,25 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LocalDebuggerCommand>$(IDADIR)\idaq.exe </LocalDebuggerCommand>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <QTDIR>C:\Qt\4.8.4</QTDIR>
+    <QTDIR>P:\local\Qt\5.5.1\5.5\msvc2013</QTDIR>
     <LocalDebuggerEnvironment>PATH=$(QTDIR)\bin%3b$(PATH)</LocalDebuggerEnvironment>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug64|Win32'">
     <LocalDebuggerCommand>$(IDADIR)\idaq64.exe </LocalDebuggerCommand>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <QTDIR>C:\Qt\4.8.4</QTDIR>
+    <QTDIR>P:\local\Qt\5.5.1\5.5\msvc2013</QTDIR>
     <LocalDebuggerEnvironment>PATH=$(QTDIR)\bin%3b$(PATH)</LocalDebuggerEnvironment>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LocalDebuggerCommand>$(IDADIR)\idaq.exe </LocalDebuggerCommand>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <QTDIR>C:\Qt\4.8.4</QTDIR>
+    <QTDIR>P:\local\Qt\5.5.1\5.5\msvc2013</QTDIR>
     <LocalDebuggerEnvironment>PATH=$(QTDIR)\bin%3b$(PATH)</LocalDebuggerEnvironment>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release64|Win32'">
     <LocalDebuggerCommand>$(IDADIR)\idaq64.exe </LocalDebuggerCommand>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <QTDIR>C:\Qt\4.8.4</QTDIR>
+    <QTDIR>P:\local\Qt\5.5.1\5.5\msvc2013</QTDIR>
     <LocalDebuggerEnvironment>PATH=$(QTDIR)\bin%3b$(PATH)</LocalDebuggerEnvironment>
   </PropertyGroup>
 </Project>

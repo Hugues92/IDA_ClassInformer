@@ -2,7 +2,7 @@
 #pragma once
 
 #include <Windows.h>
-#include <QtGui/QDialog>
+#include <QtWidgets/QDialog>
 #include "ui_dialog.h"
 
 class MainDialog : public QDialog, public Ui::Dialog

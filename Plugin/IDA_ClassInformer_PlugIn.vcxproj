@@ -122,7 +122,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <WholeProgramOptimization>true</WholeProgramOptimization>
-      <AdditionalIncludeDirectories>.;.\GeneratedFiles;.\GeneratedFiles\$(ConfigurationName);$(IDADIR)\idasdk\include;$(IDAUIDIR);$(QTDIR)\include;$(IDAUIDIR)\IDA_WaitEx;$(IDAUIDIR)\IDA_OggPlayer;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;.\GeneratedFiles;.\GeneratedFiles\$(ConfigurationName);$(IDADIR)\idasdk\include;$(IDAUIDIR);$(QTDIR)\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtWidgets;$(IDAUIDIR)\IDA_WaitEx;$(IDAUIDIR)\IDA_OggPlayer;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;__NT__;__IDP__;__VC__;NO_OBSOLETE_FUNCS;QT_NO_DEBUG;QT_DLL;QT_GUI_LIB;QT_CORE_LIB;QT_NAMESPACE=QT;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -164,7 +164,10 @@
       <OutputFile>$(SolutionDir)Release\IDA_RTTI_Informer_PlugIn.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
-      <Command>copy "$(OutDir)$(TargetFileName)" "$(IDADIR)\plugins"</Command>
+      <Command>
+        copy "$(OutDir)$(TargetFileName)" "$(SolutionDir)"
+        copy "$(OutDir)$(TargetFileName)" "$(IDADIR)\plugins"
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release64|Win32'">
@@ -229,7 +232,10 @@
       <OutputFile>$(SolutionDir)Release\IDA_RTTI_Informer_PlugIn.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
-      <Command>copy "$(OutDir)$(TargetFileName)" "$(IDADIR)\plugins"</Command>
+      <Command>
+        copy "$(OutDir)$(TargetFileName)" "$(SolutionDir)"
+        copy "$(OutDir)$(TargetFileName)" "$(IDADIR)\plugins"
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -275,6 +281,7 @@
       <DataExecutionPrevention />
       <ImportLibrary />
       <TargetMachine>MachineX86</TargetMachine>
+      <ShowProgress>NotSet</ShowProgress>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -301,7 +308,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <PrecompiledHeader>Create</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
@@ -611,16 +618,16 @@
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug64|Win32'">Moc%27ing MainDialog.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug64|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp" "-fstdafx.h" "-f../../MainDialog.h"  -D_DEVMODE -D_DEBUG -DWIN32 -D_WINDOWS -D_USRDLL -D__NT__ -D__IDP__ -D__VC__ -DNO_OBSOLETE_FUNCS -DQT_DLL -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB -DQT_NAMESPACE=QT -DQT_THREAD_SUPPORT -D_CRT_SECURE_NO_WARNINGS -D_VC80_UPGRADE=0x0600 -D_WINDLL "-I." "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(IDADIR)\idasdk\include" "-I$(IDAUIDIR)\." "-I$(QTDIR)\include" "-I$(IDAUIDIR)\IDA_WaitEx" "-I$(IDAUIDIR)\IDA_OggPlayer"</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug64|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp" "-fstdafx.h" "-f../../MainDialog.h"  -D_DEVMODE -D_DEBUG -DWIN32 -D_WINDOWS -D_USRDLL -D__NT__ -D__IDP__ -D__VC__ -DNO_OBSOLETE_FUNCS -DQT_DLL -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB -DQT_NAMESPACE=QT -DQT_THREAD_SUPPORT -D_CRT_SECURE_NO_WARNINGS -D_VC80_UPGRADE=0x0600 -D_WINDLL "-I." "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(IDADIR)\idasdk\include" "-I$(IDAUIDIR)\." "-I$(QTDIR)\include" "-I$(IDAUIDIR)\IDA_WaitEx" "-I$(IDAUIDIR)\IDA_OggPlayer"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_DEVMODE -D_DEBUG -DWIN32 -D_WINDOWS -D_USRDLL -D__NT__ -D__IDP__ -D__VC__ -DNO_OBSOLETE_FUNCS -DQT_DLL -DQT_GUI_LIB -DQT_CORE_LIB -DQT_NAMESPACE=QT -D_CRT_SECURE_NO_WARNINGS -D_VC80_UPGRADE=0x0600 -D_WINDLL  "-I." "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(IDADIR)\idasdk\include" "-I$(IDAUIDIR)\." "-I$(QTDIR)\include" "-I$(IDAUIDIR)\IDA_WaitEx" "-I$(IDAUIDIR)\IDA_OggPlayer"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug64|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_DEVMODE -D__EA64__ -D_DEBUG -DWIN32 -D_WINDOWS -D_USRDLL -D__NT__ -D__IDP__ -D__VC__ -DNO_OBSOLETE_FUNCS -DQT_DLL -DQT_GUI_LIB -DQT_CORE_LIB -DQT_NAMESPACE=QT -D_CRT_SECURE_NO_WARNINGS -D_VC80_UPGRADE=0x0600 -D_WINDLL  "-I." "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(IDADIR)\idasdk\include" "-I$(IDAUIDIR)\." "-I$(QTDIR)\include" "-I$(IDAUIDIR)\IDA_WaitEx" "-I$(IDAUIDIR)\IDA_OggPlayer" "-fstdafx.h" "-f../../MainDialog.h"</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release64|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing MainDialog.h...</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release64|Win32'">Moc%27ing MainDialog.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release64|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_DEVMODE -DWIN32 -DNDEBUG -D_WINDOWS -D_USRDLL -D__NT__ -D__IDP__ -D__VC__ -DNO_OBSOLETE_FUNCS -DQT_NO_DEBUG -DQT_DLL -DQT_GUI_LIB -DQT_CORE_LIB -DQT_NAMESPACE=QT -D_CRT_SECURE_NO_WARNINGS -D_VC80_UPGRADE=0x0600 -D_WINDLL "-I." "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(IDADIR)\idasdk\include" "-I$(IDAUIDIR)\." "-I$(QTDIR)\include" "-I$(IDAUIDIR)\IDA_WaitEx" "-I$(IDAUIDIR)\IDA_OggPlayer"</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release64|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_DEVMODE -DWIN32 -DNDEBUG -D_WINDOWS -D_USRDLL -D__NT__ -D__IDP__ -D__VC__ -DNO_OBSOLETE_FUNCS -DQT_NO_DEBUG -DQT_DLL -DQT_GUI_LIB -DQT_CORE_LIB -DQT_NAMESPACE=QT -D_CRT_SECURE_NO_WARNINGS -D_VC80_UPGRADE=0x0600 -D_WINDLL "-I." "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(IDADIR)\idasdk\include" "-I$(IDAUIDIR)\." "-I$(QTDIR)\include" "-I$(IDAUIDIR)\IDA_WaitEx" "-I$(IDAUIDIR)\IDA_OggPlayer"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DWIN32 -DNDEBUG -D_WINDOWS -D_USRDLL -D__NT__ -D__IDP__ -D__VC__ -DNO_OBSOLETE_FUNCS -DQT_NO_DEBUG -DQT_DLL -DQT_GUI_LIB -DQT_CORE_LIB -DQT_NAMESPACE=QT -D_CRT_SECURE_NO_WARNINGS -D_VC80_UPGRADE=0x0600 -D_WINDLL  "-I." "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(IDADIR)\idasdk\include" "-I$(IDAUIDIR)\." "-I$(QTDIR)\include" "-I$(IDAUIDIR)\IDA_WaitEx" "-I$(IDAUIDIR)\IDA_OggPlayer"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release64|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D__EA64__ -DWIN32 -DNDEBUG -D_WINDOWS -D_USRDLL -D__NT__ -D__IDP__ -D__VC__ -DNO_OBSOLETE_FUNCS -DQT_NO_DEBUG -DQT_DLL -DQT_GUI_LIB -DQT_CORE_LIB -DQT_NAMESPACE=QT -D_CRT_SECURE_NO_WARNINGS -D_VC80_UPGRADE=0x0600 -D_WINDLL  "-I." "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(IDADIR)\idasdk\include" "-I$(IDAUIDIR)\." "-I$(QTDIR)\include" "-I$(IDAUIDIR)\IDA_WaitEx" "-I$(IDAUIDIR)\IDA_OggPlayer"</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -653,7 +660,7 @@
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties Qt5Version_x0020_Win32="4.8.4" />
+      <UserProperties Qt5Version_x0020_Win32="msvc2013" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

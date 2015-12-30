@@ -298,9 +298,9 @@ void customizeChooseWindow()
             tv->sortByColumn(3, Qt::DescendingOrder);
 
             // Resize to contents
-            tv->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
+            tv->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
             tv->resizeColumnsToContents();
-            tv->horizontalHeader()->setResizeMode(QHeaderView::Interactive);
+			tv->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);
 
             UINT count = getTableCount();
             for (UINT row = 0; row < count; row++)
@@ -756,8 +756,10 @@ static UINT doInittermTable(func_t *func, ea_t start, ea_t end, LPCTSTR name)
             if (func)
             {
                 char funcName[MAXSTR]; funcName[SIZESTR(funcName)] = 0;
-                if (get_long_name(BADADDR, func->startEA, funcName, SIZESTR(funcName)))
+				qstring fn;
+                if (get_long_name(&fn, func->startEA))
                 {
+					strncpy(funcName, fn.c_str(), (MAXSTR - 1));
                     _strlwr(funcName);
 
                     // Start/ctor?
@@ -921,9 +923,11 @@ static BOOL processStaticTables()
             if (func_t *func = getn_func(i))
             {
                 char name[MAXSTR]; name[SIZESTR(name)] = 0;
-                if (get_long_name(BADADDR, func->startEA, name, SIZESTR(name)))
+				qstring n;
+                if (get_long_name(&n, func->startEA))
                 {
-                    int len = strlen(name);
+					strncpy(name, n.c_str(), (MAXSTR - 1));
+					int len = strlen(name);
                     if (len >= SIZESTR("_cinit"))
                     {
                         if (strcmp((name + (len - SIZESTR("_cinit"))), "_cinit") == 0)
@@ -1116,12 +1120,15 @@ BOOL getPlainTypeName(__in LPCSTR mangled, __out_bcount(MAXSTR) LPSTR outStr)
     else
     // IDA demangler for everything else
     {
-        int result = demangle_name(outStr, (MAXSTR - 1), mangled, (MT_MSCOMP | MNG_NODEFINIT));
-        if (result < 0)
-        {
-            //msg("** getPlainClassName:demangle_name() failed to unmangle! result: %d, input: \"%s\"\n", result, mangled);
-            return(FALSE);
-        }
+		qstring s;
+        int result = demangle_name2(&s, mangled, (MT_MSCOMP | MNG_NODEFINIT));
+		if (result < 0)
+		{
+			msg("** getPlainClassName:demangle_name() failed to unmangle! result: %d, input: \"%s\"\n", result, mangled);
+			return(FALSE);
+		}
+		else
+			strncpy(outStr, s.c_str(), (MAXSTR - 1));
 
         // No inhibit flags will drop this
         if (LPSTR ending = strstr(outStr, "::`vftable'"))
